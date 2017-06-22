@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+    <html lang="en-GB">
+    <head>
+        <title>Revision Rocket</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="/static/images/RR-logo-min.png">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.0/css/bootstrap-slider.css" rel="stylesheet" type="text/css">
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.0/bootstrap-slider.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        <script src="https://www.google.com/jsapi?key=AIzaSyAl5Fy4rpnq5oUcEy_XtpMjoys1IfT8YqI"></script>
+    	<script src="https://apis.google.com/js/client.js?onload=initPicker"></script>
+
+        <!-- JQUERY CONFIRM BOXES -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.0.3/jquery-confirm.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.0.201604172/pdfobject.js"></script>
+
+        <!-- INTERAL JS Charts/Graphs -->
+        <script src="/static/js/jquery.canvasjs.min.js" type="text/javascript"></script>
+
+        <!-- INTERNAL JS -->
+        <script src="/static/js/main.js" type="text/javascript"></script>
+        <script src="/static/js/google_drive.js"></script>
+
+        <!-- INTERNAL CSS -->
+        <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+
+        <div id="userInformation" style="display: none;">
+            <p id="userEmail">{{ userEmail }}</p>
+            <p id="userForename">{{ userForename }}</p>
+            <p id="userSurname">{{ userSurname }}</p>
+            <p id="userRole">{{ userRole }}</p>
+        </div>
+    </head>
+
+    <body id="mainPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#home" style="padding:0px;">
+                        <img src="/static/images/RR-logo-transparent-3.png" style="height:100%;">
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#home">HOME</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">SUBJECTS
+                            <span class="caret"></span></a>
+                            <ul id="subjectList" class="dropdown-menu">
+                                {% for subject in subjects1 %}
+                                    <li><a href="#" data-toggle="modal" data-target="#subjectModal">{{ subject.subject_name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+                            <span class="caret"></span></a>
+                            <ul id="areasDropdown" class="dropdown-menu">
+                                <li id="studentsAreaBtn"><a href="#">Student's Area</a></li>
+                                <li id="teachersAreaBtn"><a href="#">Teacher's Area</a></li>
+                            </ul>
+                        </li>
+                        <a href="#" class="navbar-brand">
+                            <img id="profileImage" class="img-responsive" src={{ profilePicture }} style="display:inline-block; height:30px; margin-top:-5px"/>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="home" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#home" data-slide-to="0" class="active"></li>
+                <li data-target="#home" data-slide-to="1"></li>
+                <li data-target="#home" data-slide-to="2"></li>
+                <li data-target="#home" data-slide-to="3"></li>
+                <li data-target="#home" data-slide-to="4"></li>
+                <li data-target="#home" data-slide-to="5"></li>
+                <li data-target="#home" data-slide-to="6"></li>
+                <li data-target="#home" data-slide-to="7"></li>
+                <li data-target="#home" data-slide-to="8"></li>
+                <li data-target="#home" data-slide-to="9"></li>
+                <li data-target="#home" data-slide-to="10"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/static/images/RR-banner.png" alt="0" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/static/images/Banner_1.jpg" alt="1" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_2.jpg" alt="2" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_3.jpg" alt="3" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_4.jpg" alt="4" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_5.jpg" alt="5" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_6.jpg" alt="6" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_7.jpg" alt="7" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_8.jpg" alt="8" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_9.jpg" alt="9" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/static/images/Banner_10.jpg" alt="10" width="1200" height="700">
+                    <div class="carousel-caption">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#home" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+
+            <a class="right carousel-control" href="#home" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+        <!-- Revision Modal -->
+        <div class="modal fade" id="subjectModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 id="subjectNameModalHeader">subject name</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <!-- FILTER -->
+                        <div id="filterSubject" class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Filters</div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <center><div class="panel-heading">Qualification level</div></center>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <select class="form-control" id="qualificationList">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <center><div class="panel-heading">Topics</div></center>
+                                        <div class="panel-body">
+                                            <div class="form-group">
+                                                <select class="form-control" id="topicsList">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="revisionTabs" style="display: none;">
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="active"><a data-toggle="tab" href="#subjectSummary" id="subjectSummaryTab">Summary</a></li>
+                                <li class="disabled"><a href="#subjectQuiz" id="subjectQuizTab">Test Yourself!</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Revision Resources
+                                    <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a data-toggle="tab" href="#subjectRevisionPresentations" id="subjectRevisionPresentationsTab">Presentations</a></li>
+                                        <li><a data-toggle="tab" href="#subjectRevisionKeyWords" id="subjectRevisionKeyWordsTab">Key Words</a></li>
+                                        <li><a data-toggle="tab" href="#subjectRevisionNotes" id="subjectRevisionNotesTab">Notes</a></li>
+                                        <li><a data-toggle="tab" href="#subjectRevisionVideos" id="subjectRevisionVideosTab">Videos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a data-toggle="tab" href="#subjectExamQuestions">Exam Questions</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="subjectSummary" class="tab-pane fade in active">
+                                    <h3><center>Summary</center></h3>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-primary">
+                                                <div class="panel-heading">Introduction</div>
+                                                <div id="subjectTopicDesc" class="panel-body"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="panel panel-primary filterable" id="subjectTopicLeaderboardTable">
+                                                <div class="panel-heading">Leaderboard
+                                                    <div class="pull-right">
+                                                        <button class="btn btn-default btn-xs btn-filter" id="subjectTopicFilterLeaderboardBtn"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                                                    </div>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <table class="table" id="subjectTopicLeaderboard">
+                                                        <thead>
+                                                            <tr class="filters">
+                                                                <th>#</th>
+                                                                <th><input type="text" class="form-control" placeholder="Name" disabled></th>
+                                                                <th>Points</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="subjectTopicLeaderboardData">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div id="subjectQuiz" class="tab-pane fade">
+                                    <h3><center>Test Yourself!</center></h3>
+                                        <div class="panel panel-primary">
+                                            <div class="panel-heading">Options</div>
+                                            <div id="subjectOptionsQuiz" class="panel-body">
+                                                <input id="quizLengthSlider" data-slider-id="quizLengthSliderData" type="text" data-slider-step="1">
+                                            </div>
+                                        </div>
+                                </div>
+                                <div id="subjectRevisionPresentations" class="tab-pane fade">
+                                    <h3><center>Presentations</center></h3>
+                                    <table class="table table-hover" id="revisionMaterialsPresentationsTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Preview</th>
+                                                <th>Options</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td><iframe src="https://docs.google.com/viewer?srcid=17sp7iAbdKzDU7aiEgUwzGVVo8tQxMXlAwCsw34PJomw&pid=explorer&efh=false&a=v&chrome=false&embedded=true" frameborder='0' height='100%' width='100%'></iframe></td>
+                                                <td><button type="button" class="btn btn-default" onclick=" window.open('https://docs.google.com/presentation/d/17sp7iAbdKzDU7aiEgUwzGVVo8tQxMXlAwCsw34PJomw/export/pdf','_blank')">Download</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="subjectRevisionKeyWords" class="tab-pane fade">
+                                    <center>
+                                        <h3>Key Words</h3>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Preview</th>
+                                                    <th>Options</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td><iframe src="https://docs.google.com/viewer?srcid=10SlnTGcoji7FHenvSWVX_VdeZ3W9y4h_r4SbguC3og0&pid=explorer&efh=false&a=v&chrome=false&embedded=true" frameborder='0' height='100%' width='100%'></iframe></td>
+                                                    <td><button type="button" class="btn btn-default" onclick=" window.open('https://docs.google.com/document/d/10SlnTGcoji7FHenvSWVX_VdeZ3W9y4h_r4SbguC3og0/export?format=pdf','_blank')">Download</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </center>
+                                </div>
+                                <div id="subjectRevisionNotes" class="tab-pane fade">
+                                    <h3><center>Notes</center></h3>
+                                    <embed src="https://docs.google.com/document/d/1urPptvpGsh3T3uJjtFX2YWSt-fH8_wyS-6ztvlfzD-A/preview">
+                                    <!--<script>PDFObject.embed("https://docs.google.com/viewer?url=https://docs.google.com/document/d/1urPptvpGsh3T3uJjtFX2YWSt-fH8_wyS-6ztvlfzD-A/export?format=pdf", "#subjectRevisionNotes");</script>
+                                    -->
+                                </div>
+                                <div id="subjectRevisionVideos" class="tab-pane fade">
+                                    <h3><center>Videos</center></h3>
+                                </div>
+                                <div id="subjectExamQuestions" class="tab-pane fade">
+                                    <h3><center>Exam Questions</center></h3>
+                                    <center>
+                                        <select>
+                                            <option value="volvo">Volvo</option>
+                                            <option value="saab">Saab</option>
+                                            <option value="opel">Opel</option>
+                                            <option value="audi">Audi</option>
+                                        </select>
+                                    </center>
+                                </div>
+                            </div>
+                        </div>
+<!--
+                        <div id="revisionTabs" style="display: none;">
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="active"><a href="#subjectDashboard">Dashboard</a></li>
+                                <li><a href="#subjectQuiz">Test Yourself!</a></li>
+
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#subjectRevision">Revision Resources <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#revisionPresentations">Presentations</a></li>
+                                        <li><a href="#revisionKeyWords">Key Words</a></li>
+                                        <li><a href="#revisionNotes">Notes</a></li>
+                                        <li><a href="#revisionVideos">Videos</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#subjectExamQuestions">Exam Questions</a></li>
+                            </ul>
+
+                            <br>
+
+                            <div class="tab-content">
+                                <div id="subjectDashboard" class="tab-pane fade active">
+                                    <p>This is a test</p>
+                                </div>
+
+                                <div id="subjectQuiz" class="tab-pane fade">
+                                    <center><p>Here you will be tested on your knowledge of your chosen subject and topic through a series of multiple-choice questions</p></center>
+
+                                    <br>
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">Length</div>
+                                        <div class="panel-body">
+                                            <input id="quizLengthSlider" data-slider-id="quizLengthSliderData" type="text" data-slider-step="1">
+                                        </div>
+                                    </div>
+
+                                    <br>
+
+                                    <div id="textbox" style="display: block;">
+                                        <p class="alignright"><button id="startQuizBtn" type="button" class="btn">Start Quiz!</button></p>
+                                    </div>
+
+                                </div>
+
+                                <div id="revisionPresentations" class="tab-pane fade">
+                                    <p>This is a test</p>
+                                </div>
+
+                                <div id="revisionKeyWords" class="tab-pane fade">
+                                    <p>This is a test</p>
+                                </div>
+
+                                <div id="revisionNotes" class="tab-pane fade">
+                                    <p>This is a test</p>
+                                </div>
+
+                                <div id="revisionVideos" class="tab-pane fade">
+                                    <p>This is a test</p>
+                                </div>
+
+                                <div id="subjectExamQuestions" class="tab-pane fade">
+                                    <center><h3>Exam Questions</h3>
+                                    <p>Look at exam questions and good candidate response</p></center>
+                                </div>
+                            </div>
+
+                            <div id="textbox" style="display: block;">
+                                <p class="alignleft"><button id="backToFilterBtn" type="button" class="btn">Back to filters</button></p>
+                            </div>
+                            <div style="clear: both;"></div>
+
+                        </div> -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left;">Close</button>
+                        <button id="startQuizBtn" type="button" class="btn btn-default" style="float: right;">Start Quiz!</button>
+                        <button id="resetFilterBtn" type="button" class="btn btn-default">Reset filter</button>
+                        <button id="updateFilterBtn" type="button" class="btn btn-default">Update</button>
+                        <button id="backToFilterBtn" type="button" class="btn btn-default">Back to filters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Modal -->
+        <div class="modal fade" id="quizQuestionModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 id="quizQuestionNumber">question number</h4>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <!-- Question and Options -->
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Question</div>
+                                <div class="panel-body" id="quizQuestionText">
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Options</div>
+                                <div class="panel-body">
+                                    <div class="wrapper text-center">
+                                        <div class="btn-group-vertical" data-toggle="buttons" id="quizAnswerOptions">
+                                            <label class="btn btn-primary" style="white-space: normal;">
+                                                <input type="radio" id="quizOptionA" value="A" autocomplete="off"> Option A
+                                            </label>
+                                            <label class="btn btn-primary" style="white-space: normal;">
+                                                <input type="radio" id="quizOptionB" value="B" autocomplete="off"> Option B
+                                            </label>
+                                            <label class="btn btn-primary" style="white-space: normal;">
+                                                <input type="radio" id="quizOptionC" value="C" autocomplete="off"> Option C
+                                            </label>
+                                            <label class="btn btn-primary" style="white-space: normal;">
+                                                <input type="radio" id="quizOptionD" value="D" autocomplete="off"> Option D
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Progress</div>
+                                <div class="panel-body">
+                                    <div class="progress">
+                                        <div id="quizProgressBar" class="progress-bar" role="progressbar"
+                                        aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <p style="float: left;">Score <span class="badge" id="quizScoreBadge"></span></p><br>
+                        <p style="float: left;">Points <span class="badge" id="quizPointsBadge"></span></p>
+                        <button id="quizSubmitAnswerBtn" type="button" class="btn btn-default">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz (Answer) Modal -->
+        <div class="modal fade" id="quizAnswerModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 id="quizCorrectIncorrectModalHeader">correct/incorrect</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div id="quizAnswerReasonPanel" class="panel panel-default">
+                            <div class="panel-heading">Reason</div>
+                            <div class="panel-body" id="quizCorrectIncorrectReason">
+                            </div>
+                        </div>
+                        <div id="textbox" style="display: block;">
+                            <p class="alignright"><button id="quizNextQuestionBtn" type="button" class="btn" data-dismiss="modal">Next question</button></p>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz (Results) Modal -->
+        <div class="modal fade" id="quizResultsModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4>Results</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="background-color:transparent">
+                                        <font color="#111"><a data-toggle="collapse"data-parent="#accordion" href="#collapse1"
+                                        style="text-decoration:none;">Overview</a></font>
+                                    </h4>
+                                </div>
+                                <div id="collapse1" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <div class="col-sm-6">
+                                            <table class="table table-bordered">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Qualification</td>
+                                                        <td id="quizResultsModalQualificationLevel">NAME OF QUALIFICTION</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Subject</td>
+                                                        <td id="quizResultsModalSubjectName">SUBJECT NAME</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Topic</td>
+                                                        <td id="quizResultsModalTopicName">TOPIC NAME</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Score</td>
+                                                        <td id="quizResultsModalScore">SCORE HERE</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Length</td>
+                                                        <td id="quizResultsModalQuizLength">LENGTH HERE</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <center><img id="quizResultsModalImage" class="img-responsive center-block"></center>
+
+                                            <br>
+
+                                            <strong><center><h1 id="quizResultsModalScorePercentage"></h1></center></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-heading">
+                                    <h4 class="panel-title" style="background-color:transparent">
+                                        <font color="#111"><a data-toggle="collapse" data-parent="#accordion" href="#collapse2" style="text-decoration:none;">Review</a></font>
+                                    </h4>
+                                </div>
+                                <div id="collapse2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" id="quizResultsModalReviewIncorrectAnswers" checked="">
+                                            Show incorrect responses only?</label>
+                                        </div>
+                                        <table id="quizResultsModalReviewTable" class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th align="center">Question</th>
+                                                    <th align="center">Answer given</th>
+                                                    <th align="center">Correct answer</th>
+                                                    <th align="center">Reason</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Student Modal -->
+        <div class="modal fade" id="studentModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4>Student's Area</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="active"><a data-toggle="tab" href="#studentAreaLeague" id="studentAreaLeagueTab">The League</a></li>
+                            <li class="disabled"><a href="#studentAreaStats" id="studentAreaPerformanceTab">Performance</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="studentAreaLeague" class="tab-pane fade in active">
+                                <h3><center>The League</center></h3>
+                                <div class="col-sm-6">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">Profile</div>
+                                        <div id="studentAreaProfile" class="panel-body">
+                                            <div class="profile-header-img">
+                                                <center>
+                                                    <img id="studentDashboardImage" class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+
+                                                    <h5 id="studentLeagueName">NAME_HERE</h5>
+                                                    <!-- badge -->
+                                                    <div class="rank-label-container"><span class="label label-default rank-label" id="studentPoints">POINTS_HERE</span></div>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="panel panel-primary filterable" id="studentAreaLeaderboardTable">
+                                        <div class="panel-heading">Leaderboard
+                                            <div class="pull-right">
+                                                <button class="btn btn-default btn-xs btn-filter" id="studentAreaFilterLeaderboardBtn"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <table class="table" id="studentAreaLeaderboard">
+                                                <thead>
+                                                    <tr class="filters">
+                                                        <th>#</th>
+                                                        <th><input type="text" class="form-control" placeholder="Name" disabled></th>
+                                                        <th>Points</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="studentAreaLeaderboardData">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="studentAreaStats" class="tab-pane fade">
+                                <h3><center>Performance</center></h3>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter results<span class="caret"></span></button>
+                                    <ul class="dropdown-menu" id="studentAreaFilterResults">
+                                    </ul>
+                                </div>
+                                <div id="studentPerformanceChartContainer" style="width:100%; height:300px;" class="panel-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teacher Modal -->
+        <div class="modal fade" id="teacherModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4>Teacher's Area</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="active"><a data-toggle="tab" href="#teacherAreaDashboard" id="teacherAreaDashboardTab">Dashboard</a></li>
+                            <li><a data-toggle="tab" href="#teacherAreaLeague">The League</a></li>
+                            <li><a data-toggle="tab" href="#teacherAreaManager" id="teacherAreaManagerTab">Manager</a></li>
+                        </ul>
+
+                        <br>
+
+                        <div class="tab-content">
+                            <div id="teacherAreaDashboard" class="tab-pane fade in active">
+                            </div>
+
+                            <div id="teacherAreaLeague" class="tab-pane fade">
+                                <div class="col-sm-6">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading">Profile</div>
+                                        <div id="teacherLeaderboard" class="panel-body">
+                                            <div class="profile-header-img">
+                                                <center>
+                                                    <img id="teacherDashboardImage" class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+
+                                                    <h5 id="teacherLeagueName">NAME_HERE</h5>
+                                                    <!-- badge -->
+                                                    <div class="rank-label-container"><span class="label label-default rank-label" id="teacherPoints">POINTS_HERE</span></div>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="panel panel-primary filterable" id="teacherAreaLeaderboardTable">
+                                        <div class="panel-heading">Leaderboard
+                                            <div class="pull-right">
+                                                <button class="btn btn-default btn-xs btn-filter" id="teacherAreaFilterLeaderboardBtn"><span class="glyphicon glyphicon-filter"></span> Filter</button>
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <table class="table" id="teacherAreaLeaderboard">
+                                                <thead>
+                                                    <tr class="filters">
+                                                        <th>#</th>
+                                                        <th><input type="text" class="form-control" placeholder="Name" disabled></th>
+                                                        <th>Points</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="teacherLeaderboardDataTable">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="teacherAreaManager" class="tab-pane fade">
+                                <!-- FILTER -->
+                                <div id="teacherFilterSubject" class="panel-group">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">Filters</div>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <center><div class="panel-heading">Subject</div></center>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="teacherSubjectDropdownList">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <center><div class="panel-heading">Qualification level</div></center>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="teacherQualificationDropdownList">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <center><div class="panel-heading">Topics</div></center>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="teacherTopicsDropdownList">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="teacherFilterSubjectButtons" style="display: block;">
+                                    <p class="alignleft"><button id="resetFilterBtn" type="button" class="btn">Reset filter</button></p>
+                                    <p class="alignright"><button id="updateFilterBtn" type="button" class="btn">Update</button></p>
+                                </div>
+                                <div style="clear: both;"></div>
+
+                                <div id="teacherAreaTabs" style="display: none;">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li class="active"><a data-toggle="tab" href="#teacherDashboard">Dashboard</a></li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Question Manager
+                                            <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a data-toggle="tab" href="#teacherQuestionUpload" id="teacherQuestionUploadTab">Upload Questions</a></li>
+                                                <li><a data-toggle="tab" href="#teacherQuestionAdd" id="teacherQuestionAddTab">Add Questions</a></li>
+                                                <li><a data-toggle="tab" href="#teacherQuestionEdit" id="teacherQuestionEditTab">Edit Questions</a></li>
+                                                <li><a data-toggle="tab" href="#teacherQuestionDelete" id="teacherQuestionDeleteTab">Delete Questions</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Revision Manager
+                                            <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a data-toggle="tab" href="#teacherResourcePresentation" id="teacherResourcePresentationTab">Upload Presentation</a></li>
+                                                <li><a data-toggle="tab" href="#teacherResourceKeyWords" id="teacherResourceKeyWordsTab">Upload Key Words</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a data-toggle="tab" href="#teacherStudentPerformance">Student Performance</a></li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div id="teacherSubjectTopicDashboard" class="tab-pane fade in active">
+                                        </div>
+
+                                        <div id="teacherQuestionAdd" class="tab-pane fade">
+                                            <h3><center>Manual Question Entry</center></h3>
+                                            <form>
+                                                <div class="form-group">
+                                                    <center><label for="question">Question:</label></center>
+                                                    <input type="text" class="form-control" id="questionEntryQuestion" placeholder="Enter question..." name="question">
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <center>
+                                                            <label for="optionA">Option A:</label>
+                                                            <input type="text" class="form-control" id="questionEntryOptionA" placeholder="Enter option..." name="optionA">
+                                                        </center>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <center>
+                                                            <label for="optionC">Option C:</label>
+                                                            <input type="text" class="form-control" id="questionEntryOptionC" placeholder="Enter option..." name="optionC">
+                                                        </center>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <center>
+                                                            <label for="optionB">Option B:</label>
+                                                            <input type="text" class="form-control" id="questionEntryOptionB" placeholder="Enter option..." name="optionB">
+                                                        </center>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <center>
+                                                            <label for="optionD">Option D:</label>
+                                                            <input type="text" class="form-control" id="questionEntryOptionD" placeholder="Enter option..." name="optionD">
+                                                        </center>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <center><label for="question">Question:</label></center>
+                                                    <input type="text" class="form-control" id="questionEntryQuestion" placeholder="Enter question" name="question">
+                                                </div>
+
+                                                <div class="checkbox">
+                                                    <center><label for="question">Correct Option?</label></center>
+                                                    <div class="btn-group-horizontal" data-toggle="buttons" id="questionEntryOpts">
+                                                        <label class="btn btn-primary" style="white-space: normal;">
+                                                            <input type="radio" id="questionEntryOptA" value="A" autocomplete="off"> A
+                                                        </label>
+                                                        <label class="btn btn-primary" style="white-space: normal;">
+                                                            <input type="radio" id="questionEntryOptB" value="B" autocomplete="off"> B
+                                                        </label>
+                                                        <label class="btn btn-primary" style="white-space: normal;">
+                                                            <input type="radio" id="questionEntryOptC" value="C" autocomplete="off"> C
+                                                        </label>
+                                                        <label class="btn btn-primary" style="white-space: normal;">
+                                                            <input type="radio" id="questionEntryOptD" value="D" autocomplete="off"> D
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="answerReason">Password:</label>
+                                                    <input type="comment" class="form-control" id="pwd" placeholder="Enter password" name="answerReason">
+                                                </div>
+
+                                                <button type="submit" class="btn btn-default">Submit</button>
+                                            </form>
+
+                                                <br>
+                                        </div>
+
+                                        <div id="teacherStudentPerformance" class="tab-pane fade">
+                                            <h3><center>Student Performance</center></h3>
+                                            <center><p>Here you may view student(s) progress against the topic selected</p></center>
+                                            <div id="chartContainer" style="width:100%; height:300px;"></div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button id="backToFilterBtn" type="button" class="btn btn-default">Back to filters</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Container (Subjects Section) -->
+        <div id="subjectsSection" class="bg-1">
+            <div class="container">
+                <h3 class="text-center">SUBJECTS</h3>
+                <p class="text-center">Wise men talk because they have something to say; fools, because they have to say something - Plato</p>
+
+                <br>
+
+                <div class="row text-center">
+                    {% for subject in subjects2%}
+                        <div class="col-sm-4">
+                            <div class="thumbnail">
+                                <img src="{{ subject.image_link }}" alt="subject" width="400" height="300">
+                                <p id="subjectBox{{ loop.index }}"><strong>{{ subject.subject_name }}</strong></p>
+                                <button id="revisionButton{{ loop.index }}" class="btn" data-toggle="modal" data-target="#subjectModal">Revise!</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Container (The Team Section) -->
+        <div id="about" class="container text-center">
+            <h3>THE TEAM</h3>
+            <p><i>The roots of education are bitter, but the fruit is sweet - Aristotle</i></p>
+
+            <br>
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <p class="text-center"><strong>Diogo Costa</strong></p><br>
+                    <a href="#teamMember1" data-toggle="collapse">
+                        <img src="/static/images/Diogo_Costa.jpg" class="img-circle person" alt="Diogo Costa" width="255" height="255">
+                    </a>
+
+                    <div id="teamMember1" class="collapse">
+                        <p>Project Lead</p>
+                        <p>Computer Science (A-level)</p>
+                        <p><i>Reason has always existed, but not always in a reasonable form</i></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <p class="text-center"><strong>Christopher Petch</strong></p><br>
+                    <a href="#teamMember2" data-toggle="collapse">
+                        <img src="/static/images/Chris_Petch.jpg" class="img-circle person" alt="Christopher Petch" width="255" height="255">
+                    </a>
+
+                    <div id="teamMember2" class="collapse">
+                        <p>Assistant Head of 6th Form</p>
+                        <p>Software Engineering (MSc)</p>
+                        <p>Mathematics and Physics (BSc)</p>
+                        <p><i>I cannot teach anybody anything, I can only make them think</i></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <p class="text-center"><strong>Kamal Patel</strong></p><br>
+                    <a href="#teamMember3" data-toggle="collapse">
+                        <img src="/static/images/Kamal_Patel.jpg" class="img-circle person" alt="Kamal Patel" width="255" height="255">
+                    </a>
+                    <div id="teamMember3" class="collapse">
+                        <p>Subject Lead for Computer Science</p>
+                        <p>Software Engineering (BEng)</p>
+                        <p><i>We are what we repeatedly do. Excellence, then, is not an act, but a habit</i></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Container (Contact Section) -->
+        <div class="bg-1">
+            <div id="contact" class="container">
+                <div class="row">
+                    <h3 class="text-center">CONTACT</h3>
+                    <p class="text-center"><em>We love our users!</em></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div>
+                            <form id="contactUsForm" action="{{ url_for('sendEmail') }}" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">
+                                                Name</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span>
+                                                </span>
+                                                <input name="contactUsName" type="name" class="form-control" placeholder="Enter name" required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">
+                                                Email Address</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                                </span>
+                                                <input name="contactUsEmail" type="email" class="form-control" placeholder="Enter email" required="required" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="subject">
+                                                Subject</label>
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-comment"></span>
+                                                </span>
+                                                <select name="contactUsSubject" class="form-control" required="required">
+                                                    <option value="General Queries">General Queries</option>
+                                                    <option value="Suggestions">Suggestions</option>
+                                                    <option value="Support">Support</option>
+                                                </select>
+                                            </div>
+                                            <!--
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-quote"></span>
+                                            </span>
+                                            <select id="subject" name="subject" class="form-control" required="required">
+                                                <option value="general">General Queries</option>
+                                                <option value="suggestions">Suggestions</option>
+                                                <option value="support">Support</option>
+                                            </select>-->
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">
+                                                Message</label>
+                                            <textarea name="contactUsMessage" class="form-control" rows="9" cols="25" required="required"
+                                                placeholder="Message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <button id="contactUsSubmit" type="submit" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-send"></span> Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <form>
+                            <!--<legend style="color: #FFF;"><span class="glyphicon glyphicon-globe"></span> Our office</legend>-->
+                            <h2><span class="glyphicon glyphicon-globe"></span> Our space station</h2>
+                            <address>
+                                <strong>Lambeth Academy</strong><br>
+                                Elms Road<br>
+                                London, SW4 9ET<br>
+                                <abbr title="Phone">
+                                    P:</abbr>
+                                (020) 7819 4700<br>
+                                <abbr title="Email">
+                                    E:</abbr>
+                                <a href="mailto:#">10dcosta@lambeth-academy.org</a>
+                            </address>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        <div id="googleMap"></div>
+
+        <!-- Add Google Maps -->
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+
+        <script>
+            var myCenter = new google.maps.LatLng(51.457544, -0.139841);
+            function initialize() {
+                var mapProp = {
+                    center:myCenter,
+                    zoom:14,
+                    scrollwheel:false,
+                    draggable:true,
+                    mapTypeId:google.maps.MapTypeId.ROADMAP
+                };
+
+                var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                var marker = new google.maps.Marker({
+                    position:myCenter,
+                });
+
+                marker.setMap(map);
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+
+        <footer class="text-center">
+          <a class="up-arrow" href="#home" data-toggle="tooltip" title="TO TOP">
+            <span class="glyphicon glyphicon-chevron-up"></span>
+          </a><br><br>
+          <p>Copyright ©2016 - <a href="https://www.linkedin.com/in/diogocosta1998" data-toggle="tooltip" title="" data-original-title="View Diogo&#39;s Linkedin Profile">Diogo Simão Marques Costa</a></p>
+          <a href="#home"><img src="/static/images/RR-logo-transparent-2.png"></a>
+
+        </footer>
+        <!-- Footer
+        <footer class="text-center">
+            <a class="up-arrow" href="#home" data-toggle="tooltip" title="" data-original-title="TO TOP">
+                <span class="glyphicon glyphicon-chevron-up"></span>
+            </a><br><br>
+            <p>Copyright ©2016 - <a href="https://www.linkedin.com/in/diogocosta1998" data-toggle="tooltip" title="" data-original-title="View Diogo&#39;s Linkedin Profile">Diogo Simão Marques Costa</a></p>
+            <p>Made for <a href="https://www.linkedin.com/in/diogocosta1998" data-toggle="tooltip" title="" data-original-title="Visit Lambeth Academy website">Lambeth Academy</a></p>
+            <a href="http://www.lambeth-academy.org/" target="_blank"><img src="/static/images/Logo.png" alt="Logo"></a>
+        </footer>
+        -->
+
+        <!-- Welcome Modal -->
+        <div class="modal fade" id="welcomeTeacherModal" role="dialog" data-backdrop="static">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h4 id="welcomeTeacherModalHeader">welcome message here</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <p id="welcomeTeacherModalBody1">As a teacher, the Revision Rocket offers many features to you and your students. Using the Teacher's Area, you are able to add questions to
+                        topic quizzes, upload revision materials and exam questions. Every revision method used in the Revision Rocket has been proven to work.</p>
+
+                        <br>
+
+                        <p id="welcomeTeacherModalBody2">
+                        You also have access to student progress, under the Teacher's Area. You are able to view individual student progress across all their
+                        subjects. The Revision Rocket offers even greater detail in progression, by allowing you TEACHER_NAME know how your students are doing in each specific
+                        topic.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Tooltip - Script -->
+        <script>
+            $(document).ready(function(){
+              // Initialize Tooltip
+              $('[data-toggle="tooltip"]').tooltip();
+
+              // Add smooth scrolling to all links in navbar + footer link
+              $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+
+                  // Prevent default anchor click behavior
+                  event.preventDefault();
+
+                  // Store hash
+                  var hash = this.hash;
+
+                  // Using jQuery's animate() method to add smooth page scroll
+                  // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                  $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                  }, 900, function(){
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                  });
+                } // End if
+              });
+            })
+        </script>
+
+        <!-- Google Drive -->
+    	<script>
+    		function initPicker() {
+    			var picker = new FilePicker({
+    				apiKey: 'AIzaSyAl5Fy4rpnq5oUcEy_XtpMjoys1IfT8YqI',
+    				clientId: '859852150837-kcmjf8cet58m541a3lb9soi1g6cn50ug',
+    				buttonEl: document.getElementById('teacherResourcePresentationTab'),
+    				onSelect: function(file) {
+    				    $.post("/getSubjectInfo", {
+    				        subject: subjectSelected
+    				    });
+    					console.log(file.id);
+    					console.log(file.mimeType);
+
+    				}
+    			});
+    		}
+    	</script>
+
+    	<script src="https://www.google.com/jsapi?key=AIzaSyAl5Fy4rpnq5oUcEy_XtpMjoys1IfT8YqI"></script>
+    	<script src="https://apis.google.com/js/client.js?onload=initPicker"></script>
+    </body>
+</html>
